@@ -19,6 +19,10 @@ SilentPrint目前支持了
 
 支持windows 32位 64位（>= v1.0.0）。
 
+## 下载安装
+
+点击此处下载[应用](https://github.com/wxingheng/SilentPrint/releases)。
+
 ## 应用截图
 ![](https://raw.githubusercontent.com/wxingheng/images/master/picGoscreen001.gif)
 
@@ -27,8 +31,6 @@ SilentPrint目前支持了
 > 目前仅针对Windows。Mac、Linux平台并未测试。
 
 如果你想要学习、开发、修改或自行构建SilentPrint，可以依照下面的指示：
-
-> 如果想学习Electron-vue的开发，可以查看我写的系列教程——[Electron-vue开发实战](https://molunerfinn.com/tags/Electron-vue/)
 
 1. 你需要有node、git环境。需要了解npm的相关知识。
 2. `git clone https://github.com/wxingheng/SilentPrint.git` 并进入项目
