@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DEMO</title>
+    <style>
+        input, button{
+            width: 60%;
+            line-height: 40px;
+            font-size: 30px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="打印连接 https://github.com/wxingheng/silent-print">
+    <br>
+    <input type="text" placeholder="打印机名称 PRINT A4">
+    <br>
+    <button id="print">打印</button>
+    <script src="./socket.io.js"></script>
+    <script>
+        var socket = io('http://127.0.0.1:3000');
+        socket.on('connect', function () {
+            console.log('connect');
+            setTimeout(() => {
+                socket.emit('socket-connect')
+            }, 2000)
+        });
+        socket.on('event', function (data) {
+            console.log('event');
+        });
+        socket.on('disconnect', function () {
+            console.log('disconnect');
+        });
+        document.getElementById('print').addEventListener('click', function () {
+            print('PRINT A4', 'https://www.baidu.com/');
+            // url: 'http://192.168.110.64/views/print/blood-transfusion.html?data={%22transfusion%22:0,%22transfusionReact%22:0,%22applicationNo%22:%22AP20181102-00004%22,%22inpatientNo%22:%22dsgfdsgds%22,%22name%22:%22sdfgf%22,%22sex%22:%22%E7%94%B7%22,%22aboBloodGroup%22:%22A%22,%22deptName%22:%22%E9%AA%A8%E7%A7%91%22,%22bedNo%22:null,%22age%22:null,%22rhBloodGroup%22:%22%E9%98%B4%E6%80%A7%22,%22diagnosis%22:null,%22hospitalArea%22:null,%22ascription%22:%22%E5%A4%96%E5%9C%B0%22,%22applyDoctor%22:%22%E6%98%9F%E6%81%921231234124111%22,%22remark%22:null,%22applyTime%22:%222018-11-02%2009:59:46%22,%22hbsag%22:%22--%22,%22antiHbs%22:%22--%22,%22hbeag%22:%22--%22,%22antiHbe%22:%22--%22,%22antiHbc%22:%22--%22,%22antiHcv%22:%22--%22,%22antiHiv%22:%22--%22,%22syphilis%22:%22--%22,%22hb%22:null,%22hct%22:null,%22plt%22:null,%22pt%22:null,%22aptt%22:null,%22inr%22:null,%22alt%22:null,%22fib%22:null,%22applyType%22:%22%E7%B4%A7%E6%80%A5%E8%BE%93%E8%A1%80%22,%22expUseTime%22:%222018-11-02%2010:09:00%22,%22transPurpose%22:%22PT%22,%22bagDetails%22:[{%22applicationNo%22:%22AP20181102-00004%22,%22hospitalId%22:29,%22bloodBreed%22:null,%22subtypeId%22:5,%22filterLeukocyte%22:0,%22irradiation%22:0,%22amount%22:10,%22matchedAmount%22:0,%22unit%22:%22U%22,%22subtype%22:%22%E6%82%AC%E6%B5%AE%E7%BA%A2%E7%BB%86%E8%83%9E%22}],%22recheckAmount%22:2000,%22dailyAmount%22:2000,%22records%22:[],%22hospital%22:%22%E9%AB%98%E7%BA%A7%E5%8C%BB%E9%99%A2%22,%22printMachine%22:%22PRINT%20A4%22,%22printTitle%22:null,%22printTitleUrl%22:%22huizhou_sanyuan.png%22,%22isMatch%22:null}'
+        })
+        // socket.on('print-loading', function (obj) {
+        //     console.log(obj.text);
+        // })
+        // socket.on('print-finish', function (obj) {
+        //     console.log(obj.text);
+        // })
+        socket.on('print-succ', function (obj) {
+            console.log(obj);
+        })
+        // 返回所有的打印机信息 
+        socket.on('get-printers', function (printers) {
+            console.log(printers);
+        })
+
+        /**
+         * printMachine: String --> printers[i]['name']
+         * url: String 
+         * */
+        function print(printMachine, url) {
+            socket.emit('print', {
+                printMachine: printMachine,
+                url: url
+            });
+        }
+    </script>
+</body>
+
+</html>

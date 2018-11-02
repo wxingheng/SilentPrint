@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+        html {
+            background: #333;
+            color: #fff;
+            overflow: hidden
+        }
+    </style>
+</head>
+<body>
+<script>
+    const ipc = require('electron').ipcRenderer;
+
+    function ipcSend(type) {
+        ipc.send(type);
+    }
+</script>
+<p>
+    <button onclick="ipcSend('app-show')">显示窗口</button>
+</p>
+<p>
+    <button onclick="ipcSend('app-quit')">退出</button>
+</p>
+</body>
+</html>
