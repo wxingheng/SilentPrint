@@ -201,17 +201,19 @@ const printFor = (arg, socket) => {
       backgroundColor: '#f5f5f5',
       fullscreenable: false,
       frame: true,
-      show: false
+      show: isDev ? true : false
     })
     printWin.loadURL(`${arg.url}`)
     // printWin.loadURL(`http://192.168.110.64/views/print/${arg.template}.html?data=${arg.data}`)
     printWin.webContents.openDevTools()
     printWin.webContents.on('did-finish-load', function () {
-      printWin.webContents.print({
-        silent: true, // 是否不向用户询问设置
-        printBackground: false, // 打印网页的背景颜色和图像
-        deviceName: arg.printMachine // 打印设备的名称
-      })
+      if(!isDev){
+        printWin.webContents.print({
+          silent: true, // 是否不向用户询问设置
+          printBackground: false, // 打印网页的背景颜色和图像
+          deviceName: arg.printMachine // 打印设备的名称
+        })
+      }
       setTimeout(function () {
         socket.emit('print-succ', {
           type: 'succ',

@@ -10,6 +10,7 @@
            <el-tabs :tab-position="''" style="height: 200px;">
               <el-tab-pane label="本机打印设备">
                <el-tag style="margin: 4px;"  v-for="item in $store.state.Printer.printers" :key="item.name">{{item.name}} </el-tag>
+               <h1 style="color: red" v-if="!$store.state.Printer.printers.length">没有找到您的打印机，请安装打印驱动!</h1>
               </el-tab-pane>
             </el-tabs>
         </el-main>

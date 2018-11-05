@@ -24,11 +24,13 @@ SilentPrint目前支持了
 点击此处下载[应用](https://github.com/wxingheng/SilentPrint/releases)。
 
 ## 应用截图
+![](https://raw.githubusercontent.com/wxingheng/images/master/Untitled.gif)
+
 ![](https://raw.githubusercontent.com/wxingheng/images/master/picGoscreen001.gif)
 
 ## 开发说明
 
-> 目前仅针对Windows。Mac、Linux平台并未测试。
+> 目前仅针对Windows, Mac 。Linux平台并未测试。
 
 如果你想要学习、开发、修改或自行构建SilentPrint，可以依照下面的指示：
 

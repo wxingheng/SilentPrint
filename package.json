@@ -45,7 +45,7 @@
       ]
     },
     "mac": {
-      "icon": "src/icon/icon.ico"
+      "icon": "src/icon/electron.icns"
     },
     "win": {
       "icon": "src/icon/icon.ico"
